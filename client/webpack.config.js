@@ -18,7 +18,33 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Webpack Plugin',
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js',
+      }),
+      new WebpackPwaManifest({
+        // prevents filename hashing
+        fingerprints: false,
+        inject: true,
+        name: 'JATE',
+        short_name: 'JATE',
+        description: 'just another text editor',
+        background_color: '#ffffff',
+        theme_color: '#7eb4e2',
+        start_url: '/',
+        publicPath: '/',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
