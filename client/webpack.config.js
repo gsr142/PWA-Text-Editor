@@ -30,7 +30,7 @@ module.exports = () => {
         // prevents filename hashing
         fingerprints: false,
         inject: true,
-        name: 'JATE',
+        name: 'Just another text editor',
         short_name: 'JATE',
         description: 'just another text editor',
         background_color: '#ffffff',
